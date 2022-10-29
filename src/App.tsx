@@ -65,6 +65,7 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
+      <h1 className="title">Github Api Search <img className="logo" src="github.svg" alt="logo" /></h1>
       <InputForm inputData={inputData} setInputData={setInputData} />
       {!isLoading && searchCodeResponse !== undefined && searchCodeResponse.data.items.length > 0
         ? <div><SearchedResultsList searchCodeResponse={searchCodeResponse} setIsModalOpen={setIsModalOpen} setModalData={setModalData} />

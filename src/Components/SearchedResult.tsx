@@ -23,9 +23,9 @@ export const SearchedResult: React.FC<Props> = ({ title, description, url, user,
     return (
         <>
             <tr>
-                <td><a href={url} target="_blank" rel="noreferrer">{title}</a></td>
+                <td>{title}<a href={url} target="_blank" rel="noreferrer"><button className="button-in-cell">Show File</button></a></td>
                 <td>{description}</td>
-                <td className="user-modal">{user} <button onClick={handleModalOpen}>avatar</button></td>
+                <td>{user}<button className="button-in-cell" onClick={handleModalOpen}>avatar</button></td>
             </tr>
 
         </>

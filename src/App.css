@@ -1,43 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+body {
+  background-color: rgb(17, 17, 17);
+  color: white;
+  /* background-image: url(../public/github.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: 40%; */
+  font-family: 'Poppins', sans-serif;
+}
+
+a {
+  color:#405cf5;
+}
+
+::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #f5f5f500;
+}
+
+::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #f5f5f500;
+}
+
+::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #555;
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.title{
+  font-size: 72px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 40px;
 }
 
-.App-link {
-  color: #61dafb;
+.logo {
+  width: 100px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-
 
 .pagination-container {
   display: inline-block;
@@ -52,6 +63,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color:#000000be;
 }
 
 
@@ -72,6 +84,7 @@
 .pagination-container > ul > li > a {
   display: block;
   padding: 8px 16px;
+  color: white;
 }
 
 .pagination-container > ul .selected{
@@ -95,36 +108,48 @@
   margin-bottom: -20px;
 }
 
-.user-modal {
-  cursor: pointer;
+
+.button-in-cell {
+  margin-left: 20px;
+  height: 30px;
+  width: fit-content;
+  font-size: 13px;
 }
 
 .modal {
-  border: 1px solid lightgray;
   border-radius: 10px;
-  box-shadow: 8px 8px 18px -9px rgba(66, 68, 90, 1);
-  width: 600px;
   max-width: 100%;
   height: fit-content;
   max-height: 100%;
-  background-color: white;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 10px 0px;
 }
 
 .modal > div > img {
   border-radius: 5px;
-  border: 1px solid gray
 }
 
 .modal-close {
   margin-bottom: 20px;
 }
 
-form {
+.form-container {
+  background-color: rgba(0, 0, 0, 0.582);
+  border-radius: 5px;
+  display: flex;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  justify-content: center;
+  width: 90%
+}
+
+.form-container > form {
+  width: 100%;
 }
 
 form > label > p {
@@ -136,7 +161,7 @@ form > label > p {
 form > label > input {
   border: 1px solid darkgray;
   height: 44px;
-  width: 300px;
+  width: 40%;
   max-width:100%;
   border-radius: 6px;
   font-size: 16px;
@@ -146,7 +171,7 @@ form > label > input {
 form > label > select {
   border: 1px solid darkgray;
   height: 44px;
-  width: 300px;
+  width: 40%;
   max-width:100%;
   border-radius: 6px;
   font-size: 14px;
@@ -157,14 +182,13 @@ form > label > select {
 button {
   appearance: button;
   backface-visibility: hidden;
-  background-color: #405cf5;
+  background-color: #405bf591;
   border-radius: 6px;
   border-width: 0;
   box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
   box-sizing: border-box;
   color: #fff;
   cursor: pointer;
-  font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
   font-size: 100%;
   height: 44px;
   line-height: 1.15;
@@ -192,7 +216,6 @@ button:focus {
 }
 
 #results {
-  font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 90%;
   margin: auto;
@@ -200,18 +223,18 @@ button:focus {
 }
 
 #results td, #results th {
-  border: 1px solid #ddd;
+  border: 1px solid rgba(0, 0, 0, 0.541);;
   padding: 8px;
 }
 
-#results tr:nth-child(even){background-color: #f2f2f2;}
+#results tr:nth-child(even){background-color: rgba(34, 34, 34, 0.493);;}
 
-#results tr:hover {background-color: #ddd;}
+#results tr:hover {background-color: rgb(0, 0, 0);;}
 
 #results th {
   padding-top: 12px;
   padding-bottom: 12px;
-  background-color: #405cf5;
+  background-color: #405bf591;
   color: white;
 }
 

@@ -19,7 +19,6 @@ export const SearchedResult: React.FC<Props> = ({ modalData, setIsModalOpen, set
     return (
         <div className='overlay' onClick={handleModalClose}>
             <div className="modal">
-                <button className="modal-close" onClick={handleModalClose}>Close</button>
                 {modalData && <div><img src={modalData.avatarUrl} alt="avatar" /></div>}
             </div>
         </div>
