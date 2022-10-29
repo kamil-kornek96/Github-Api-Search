@@ -68,7 +68,7 @@ a {
 
 
 .pagination-container > ul > li:hover:not(.selected):not(.disabled) {
-  background-color: #ddd;
+  background-color: rgb(31, 31, 31);
   border-radius: 5px;
 }
 

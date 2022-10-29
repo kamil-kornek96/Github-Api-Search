@@ -34,12 +34,12 @@ export const InputForm: React.FC<Props> = ({ inputData, setInputData }) => {
                 <label ref={phraseLabel}>
                     <p>Searched Phrase</p>
                     <input {...register("phrase", { required: true })} defaultValue={inputData.phrase} autoFocus />
-                    {errors.phrase && <p className="alert">Phrase is required</p>}
+                    {errors.phrase && <p className="alert">Searched Phrase is required</p>}
                 </label>
                 <label ref={userLabel}>
-                    <p>User name</p>
+                    <p>User Name</p>
                     <input {...register("user", { required: true })} defaultValue={inputData.user} />
-                    {errors.user && <p className="alert">User is required</p>}
+                    {errors.user && <p className="alert">User Name is required</p>}
                 </label>
                 <label>
                     <p>Language</p>
