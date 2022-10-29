@@ -1,0 +1,235 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+.pagination-container {
+  display: inline-block;
+}
+
+
+
+
+.pagination-container > ul > li:hover:not(.selected):not(.disabled) {
+  background-color: #ddd;
+  border-radius: 5px;
+}
+
+.pagination-container > ul > li {
+  list-style-type: none;
+  color: black;
+  float: left;
+  text-decoration: none;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.pagination-container > ul > li > a {
+  display: block;
+  padding: 8px 16px;
+}
+
+.pagination-container > ul .selected{
+  background-color: #405cf5;
+  color: white;
+  border-radius: 5px;
+}
+
+.pagination-container > ul .disabled{
+  color: darkgray;
+}
+
+.results-table {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination-items-per-page-container{
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: -20px;
+}
+
+.user-modal {
+  cursor: pointer;
+}
+
+.modal {
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  box-shadow: 8px 8px 18px -9px rgba(66, 68, 90, 1);
+  width: 600px;
+  max-width: 100%;
+  height: fit-content;
+  max-height: 100%;
+  background-color: white;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px 0px;
+}
+
+.modal > div > img {
+  border-radius: 5px;
+  border: 1px solid gray
+}
+
+.modal-close {
+  margin-bottom: 20px;
+}
+
+form {
+}
+
+form > label > p {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 10px;
+}
+
+form > label > input {
+  border: 1px solid darkgray;
+  height: 44px;
+  width: 300px;
+  max-width:100%;
+  border-radius: 6px;
+  font-size: 16px;
+  text-indent: 10px;
+}
+
+form > label > select {
+  border: 1px solid darkgray;
+  height: 44px;
+  width: 300px;
+  max-width:100%;
+  border-radius: 6px;
+  font-size: 14px;
+  text-align: center;
+}
+
+
+button {
+  appearance: button;
+  backface-visibility: hidden;
+  background-color: #405cf5;
+  border-radius: 6px;
+  border-width: 0;
+  box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+  font-size: 100%;
+  height: 44px;
+  line-height: 1.15;
+  margin: 12px 0 0;
+  outline: none;
+  overflow: hidden;
+  padding: 0 25px;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  transform: translateZ(0);
+  transition: all .2s,box-shadow .08s ease-in;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 100px;
+}
+
+button:disabled {
+  cursor: default;
+}
+
+button:focus {
+  box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(50, 151, 211, .3) 0 0 0 4px;
+}
+
+#results {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 90%;
+  margin: auto;
+  margin-top: 20px;
+}
+
+#results td, #results th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#results tr:nth-child(even){background-color: #f2f2f2;}
+
+#results tr:hover {background-color: #ddd;}
+
+#results th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background-color: #405cf5;
+  color: white;
+}
+
+.alert {
+  margin-top:2px;
+  color: red;
+  font-weight:400;
+  font-size: 14px;
+}
+
+.loader {
+  margin-top: 100px;
+  width: 48px;
+  height: 48px;
+  border: 5px solid #FFF;
+  border-bottom-color: #405cf5;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+  }
+
+  @keyframes rotation {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+  } 
