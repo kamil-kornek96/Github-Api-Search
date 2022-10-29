@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useForm } from "react-hook-form";
 import { InputFormData } from "../Interfaces/Interfaces"
 
@@ -8,33 +8,42 @@ interface Props {
 }
 
 export const InputForm: React.FC<Props> = ({ inputData, setInputData }) => {
+    const phraseLabel = useRef<any>();
+    const userLabel = useRef<any>();
     const { register, formState: { errors }, handleSubmit } = useForm<InputFormData>();
     const onSubmit = handleSubmit(data => {
         data.page = 1;
         data.perPage = inputData.perPage;
         setInputData(data);
     });
+    function forceAutoFocusWhenDefaultData() {
+        if (inputData.phrase !== "" && inputData.user !== "") {
+            { phraseLabel.current && phraseLabel.current.children[1].focus() }
+            { userLabel.current && userLabel.current.children[1].focus() }
+        }
+    }
+    forceAutoFocusWhenDefaultData();
 
     return (
         <form onSubmit={onSubmit}>
-            <label>
+            <label ref={phraseLabel}>
                 <p>Phrase</p>
-                <input {...register("phrase", { required: true })} />
-                {errors.phrase?.type === 'required' && <p className="alert">Phrase is required</p>}
+                <input {...register("phrase", { required: true })} defaultValue={inputData.phrase} autoFocus />
+                {errors.phrase && <p className="alert">Phrase is required</p>}
             </label>
-            <label>
+            <label ref={userLabel}>
                 <p>User name</p>
-                <input {...register("user", { required: true })} />
-                {errors.user?.type === 'required' && <p className="alert">User name is required</p>}
+                <input {...register("user", { required: true })} defaultValue={inputData.user} />
+                {errors.user && <p className="alert">User is required</p>}
             </label>
             <label>
                 <p>Language</p>
                 <select
                     {...register("language")}>
-                    <option value="">--Choose Language--</option>
-                    <option value="go">Go</option>
-                    <option value="javascript">JavaScript</option>
-                    <option value="java">Java</option>
+                    <option selected={inputData.language === ""} value="">--All languages--</option>
+                    <option selected={inputData.language === "go"} value="go">Go</option>
+                    <option selected={inputData.language === "javascript"} value="javascript">JavaScript</option>
+                    <option selected={inputData.language === "java"} value="java">Java</option>
                 </select>
             </label>
             <br />

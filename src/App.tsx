@@ -25,6 +25,16 @@ const App: React.FC = () => {
   const [modalData, setModalData] = useState<{ avatarUrl: string } | undefined>(undefined)
   const [responseError, setResponseError] = useState<string>("")
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [overThousandResult, setOverThousandResults] = useState<{ bool: boolean, results: number }>({ bool: false, results: 0 });
+
+  useEffect(() => {
+    const responseDataLocalStorage = localStorage.getItem('responseData')
+    const inputDataLocalStorage = localStorage.getItem('inputData')
+    if (responseDataLocalStorage)
+      setSearchCodeResponse(JSON.parse(responseDataLocalStorage));
+    if (inputDataLocalStorage)
+      setInputData(JSON.parse(inputDataLocalStorage));
+  }, [])
 
   useEffect(() => {
     async function ApiCall() {
@@ -32,13 +42,25 @@ const App: React.FC = () => {
         setIsLoading(true);
         const params: searchCodeParameters = CreateParamaters(inputData)
         const response = await GetSearchCodeData(params, setResponseError)
-        if (response)
-          setLastPage(Math.ceil(response.data.total_count / inputData.perPage))
+        if (response) {
+          if (response.data.total_count > 1000) {
+            setLastPage(Math.ceil(1000 / inputData.perPage))
+            setOverThousandResults({ bool: true, results: response.data.total_count });
+          }
+          else {
+            setLastPage(Math.ceil(response.data.total_count / inputData.perPage))
+            setOverThousandResults({ bool: false, results: 0 });
+          }
+        }
         setSearchCodeResponse(response);
+        localStorage.setItem("responseData", JSON.stringify(response))
+        localStorage.setItem("inputData", JSON.stringify(inputData))
         setIsLoading(false);
       }
     }
     ApiCall();
+    setIsModalOpen(false);
+    setModalData(undefined);
   }, [inputData])
 
   return (
@@ -46,6 +68,8 @@ const App: React.FC = () => {
       <InputForm inputData={inputData} setInputData={setInputData} />
       {!isLoading && searchCodeResponse !== undefined && searchCodeResponse.data.items.length > 0
         ? <div><SearchedResultsList searchCodeResponse={searchCodeResponse} setIsModalOpen={setIsModalOpen} setModalData={setModalData} />
+          {overThousandResult.bool && <p className="alert">Nota that githup api can acces only first 1000 results, which you can browse here.<br />
+            Your query found {overThousandResult.results} results.</p>}
           <Pagination inputData={inputData} setInputData={setInputData} lastPage={lastPage} /></div>
         : !isLoading ? <p>No results</p> : <span className="loader"></span>}
       {isModalOpen && <Modal modalData={modalData} setIsModalOpen={setIsModalOpen} setModalData={setModalData} />}
