@@ -30,6 +30,7 @@ export const Pagination: React.FC<Props> = ({ inputData, setInputData, lastPage 
         <div className="pagination-container">
             <div className="pagination-items-per-page-container">Items per page:<br />
                 <select
+                    className="item-per-page-select"
                     value={inputData.perPage}
                     onChange={handleChange}
                     name="perPage"
@@ -40,7 +41,6 @@ export const Pagination: React.FC<Props> = ({ inputData, setInputData, lastPage 
                     <option value="50">50</option>
                 </select>
             </div>
-            <br />
             <ReactPaginate
                 breakLabel="..."
                 nextLabel=">"

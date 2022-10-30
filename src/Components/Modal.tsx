@@ -17,10 +17,9 @@ export const SearchedResult: React.FC<Props> = ({ modalData, setIsModalOpen, set
 
 
     return (
-        <div className='overlay' onClick={handleModalClose}>
-            <div className="modal">
-                {modalData && <div><img src={modalData.avatarUrl} alt="avatar" /></div>}
-            </div>
+        <div>
+            {modalData && <img className="modal-photo" src={modalData.avatarUrl} alt="avatar" />}
+            <div className='overlay' onClick={handleModalClose}></div>
         </div>
     )
 
