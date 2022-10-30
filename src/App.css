@@ -47,7 +47,11 @@ a {
 }
 
 .pagination-container {
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
 }
 
 .overlay {
@@ -119,6 +123,7 @@ a {
 
 ul {
   margin: 0px;
+  padding-inline-start: 0px;
 }
 
 .button-in-cell {

@@ -53,7 +53,9 @@ const App: React.FC = () => {
           }
         }
         setSearchCodeResponse(response);
-        localStorage.setItem("responseData", JSON.stringify(response))
+        if (response !== undefined) {
+          localStorage.setItem("responseData", JSON.stringify(response))
+        }
         localStorage.setItem("inputData", JSON.stringify(inputData))
         setIsLoading(false);
       }
