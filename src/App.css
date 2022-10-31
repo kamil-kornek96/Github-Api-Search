@@ -87,14 +87,19 @@ a {
 
 .pagination-container > ul > li {
   list-style-type: none;
-  color: black;
   float: left;
   text-decoration: none;
   margin: 0px 5px 20px 5px;
   cursor: pointer;
 }
 
-.pagination-container > ul > li > a {
+.disabled > a {
+  display: block;
+  padding: 8px 16px;
+  color: rgba(169, 169, 169, 0.603);
+}
+
+.pagination-container > ul > li:not(.disabled) > a {
   display: block;
   padding: 8px 16px;
   color: white;
@@ -106,9 +111,7 @@ a {
   border-radius: 5px;
 }
 
-.pagination-container > ul .disabled{
-  color: darkgray;
-}
+
 
 .results-table {
   display: flex;
