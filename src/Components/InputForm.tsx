@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { InputFormData } from "../Interfaces/Interfaces"
 
@@ -8,18 +8,22 @@ interface Props {
 }
 
 export const InputForm: React.FC<Props> = ({ inputData, setInputData }) => {
-    const { register, watch, formState: { errors }, handleSubmit } = useForm<InputFormData>();
+    const { register, watch, reset, formState: { errors }, handleSubmit } = useForm<InputFormData>();
     const onSubmit = handleSubmit(data => {
         data.page = 1;
         data.perPage = inputData.perPage;
         setInputData(data);
     });
 
+    useEffect(() => {
+        reset({ language: inputData.language });
+    }, [inputData.language, reset])
+
     return (
         <div className="form-container">
             <form onSubmit={onSubmit}>
                 <label className="search-label" >
-                    <input className="search-input" {...register("phrase", { required: true })} defaultValue={inputData.phrase} autoFocus placeholder="Phrase" />
+                    <input className="search-input" {...register("phrase", { required: true })} defaultValue={inputData.phrase} placeholder="Phrase" />
                     {errors.phrase && <span className="search-bar-alert red-fade">Searched Phrase is required</span>}
                     {!errors.user && watch("phrase") !== undefined && watch("phrase") !== "" && <span className="search-bar-alert black-fade">Phrase</span>}
                 </label>
@@ -30,11 +34,12 @@ export const InputForm: React.FC<Props> = ({ inputData, setInputData }) => {
                 </label>
                 <label className="search-label">
                     <select className="search-dropdown"
-                        {...register("language")}>
-                        <option selected={inputData.language === ""} value="">Language (optional)</option>
-                        <option selected={inputData.language === "go"} value="go">Go</option>
-                        <option selected={inputData.language === "javascript"} value="javascript">JavaScript</option>
-                        <option selected={inputData.language === "java"} value="java">Java</option>
+                        {...register("language")}
+                        defaultValue={inputData.language}>
+                        <option value="">Language (optional)</option>
+                        <option value="go">Go</option>
+                        <option value="javascript">JavaScript</option>
+                        <option value="java">Java</option>
                     </select>
                     {watch("user") !== undefined && watch("language") !== "" && <span className="search-bar-alert black-fade">Language</span>}
                 </label>

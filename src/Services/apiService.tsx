@@ -26,7 +26,8 @@ export const GetSearchCodeData = async (param: searchCodeParameters, setResponse
         }
     }
     catch (err: any) {
-        if (err.message === "Validation Failed: {\"message\":\"Must include at least one user, organization, or repository\",\"resource\":\"Search\",\"field\":\"q\",\"code\":\"invalid\"}")
+        if (err.message ===
+            "Validation Failed: {\"message\":\"Must include at least one user, organization, or repository\",\"resource\":\"Search\",\"field\":\"q\",\"code\":\"invalid\"}")
             setResponseError("User name not found");
         else {
             setResponseError(err.message);

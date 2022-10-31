@@ -28,10 +28,7 @@ const App: React.FC = () => {
   const [overThousandResult, setOverThousandResults] = useState<{ bool: boolean, results: number }>({ bool: false, results: 0 });
 
   useEffect(() => {
-    const responseDataLocalStorage = localStorage.getItem('responseData')
     const inputDataLocalStorage = localStorage.getItem('inputData')
-    if (responseDataLocalStorage)
-      setSearchCodeResponse(JSON.parse(responseDataLocalStorage));
     if (inputDataLocalStorage)
       setInputData(JSON.parse(inputDataLocalStorage));
   }, [])
@@ -53,9 +50,6 @@ const App: React.FC = () => {
           }
         }
         setSearchCodeResponse(response);
-        if (response !== undefined) {
-          localStorage.setItem("responseData", JSON.stringify(response))
-        }
         localStorage.setItem("inputData", JSON.stringify(inputData))
         setIsLoading(false);
       }
